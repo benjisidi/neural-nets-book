@@ -102,7 +102,8 @@ class Network:
         for epoch in range(epochs):
             shuffle(training_data)
             mini_batches = [
-                training_data[i] for i in range(0, len(training_data), mini_batch_size)
+                training_data[i : i + mini_batch_size]
+                for i in range(0, len(training_data), mini_batch_size)
             ]
             for mini_batch in mini_batches:
                 self.update_mini_batch(mini_batch, eta)
