@@ -88,7 +88,7 @@ class Network:
             (np.argmax(self.feedforward(input_)), expected)
             for (input_, expected) in test_data
         ]
-        return np.count_nonzero(int(x == y) for (x, y) in test_results)
+        return sum(int(x == y) for (x, y) in test_results)
 
     def train(self, training_data, epochs, mini_batch_size, eta, test_data=None):
         """Train the neural network using mini-batch stochastic
